@@ -37,9 +37,18 @@ public class IPLLeagueAnalyserTest {
 	}
     
     @Test
-	public void MaximumNumberofSixesAndFours() throws IPLException {
+	public void maximumNumberofSixesAndFours() throws IPLException {
 		iplAnalyser.loadIPLBatsmenData(IPL_RUNS_FILEPATH);
 		List<IPLRunsCSV> batsmenList = iplAnalyser.sortByBoundaries();
 		assertEquals(batsmenList.get(0).playerName, "Andre Russell");
+	}
+    
+    @Test
+	public void bestStrikingAndNumberofSixesAndFours() throws IPLException {
+		iplAnalyser.loadIPLBatsmenData(IPL_RUNS_FILEPATH);
+		List<IPLRunsCSV> batsmenList = iplAnalyser.sortByBoundaries();
+		iplAnalyser.loadIPLBatsmenData(IPL_RUNS_FILEPATH);
+		List<IPLRunsCSV> batsmenList1 = iplAnalyser.highestStrikeRate();
+		assertEquals(batsmenList1.get(0).playerName, "MS Dhoni");
 	}
 }
