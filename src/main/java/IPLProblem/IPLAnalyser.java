@@ -82,4 +82,23 @@ public class IPLAnalyser {
 		Collections.reverse(batsmenList);
 		return batsmenList.stream().sorted(comparator.reversed()).collect(Collectors.toList());
 	}
+	
+	//sorting by bowling average
+	public List<IPLWicketsCSV> sortByBowlingAverage() {
+		Comparator<IPLWicketsCSV> comparator = Comparator.comparing(bowler -> bowler.bowlingAverage);
+		return bowlerList.stream().sorted(comparator.reversed()).collect(Collectors.toList());
+	}
+	
+	private <E> void sort(Comparator<E> IPLComparator, List<E> sortList) {
+		for (int i = 0; i < sortList.size() - 1; i++) {
+			for (int j = 0; j < sortList.size() - i - 1; j++) {
+				E census1 = sortList.get(j);
+				E census2 = sortList.get(j + 1);
+				if (IPLComparator.compare(census1, census2) > 0) {
+					sortList.set(j, census2);
+					sortList.set(j + 1, census1);
+				}
+			}
+		}
+	}
 }
