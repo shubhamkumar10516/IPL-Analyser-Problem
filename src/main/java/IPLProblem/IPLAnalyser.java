@@ -49,4 +49,10 @@ public class IPLAnalyser {
 		Comparator<IPLRunsCSV> comparator = Comparator.comparing(Batsmen -> Batsmen.battingAverage);
 		return batsmenList.stream().sorted(comparator.reversed()).collect(Collectors.toList());
 	}
+	
+	//sorting according strike rate 
+	public List<IPLRunsCSV> highestStrikeRate() {
+		Comparator<IPLRunsCSV> comparator = Comparator.comparing(Batsmen -> Batsmen.strikeRate);
+		return batsmenList.stream().sorted(comparator.reversed()).collect(Collectors.toList());
+	}
 }
