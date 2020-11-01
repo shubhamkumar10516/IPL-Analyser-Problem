@@ -5,6 +5,8 @@ import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 
@@ -19,7 +21,13 @@ public class IPLLeagueAnalyserTest {
 		ExpectedException exceptionRule = ExpectedException.none();
 		exceptionRule.expect(IPLException.class);
 	}
-
+    
+    @Test
+	public void highestBattingAverageBatsmentest() throws IPLException {
+		iplAnalyser.loadIPLBatsmenData(IPL_RUNS_FILEPATH);
+		List<IPLRunsCSV> batsmenList = iplAnalyser.sortByBattingAverage();
+		assertEquals(batsmenList.get(0).playerName, "MS Dhoni");
+	}
 
     
 }
