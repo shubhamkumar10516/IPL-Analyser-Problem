@@ -55,4 +55,11 @@ public class IPLAnalyser {
 		Comparator<IPLRunsCSV> comparator = Comparator.comparing(Batsmen -> Batsmen.strikeRate);
 		return batsmenList.stream().sorted(comparator.reversed()).collect(Collectors.toList());
 	}
+	// sort by boundries in reverse order
+	public List<IPLRunsCSV> sortByBoundaries() {
+		Comparator<IPLRunsCSV> comparator = Comparator.comparing(Batsmen -> Batsmen.noOfBoundaries + Batsmen.noOfSixes);
+		this.batsmenList.sort(comparator);
+		Collections.reverse(batsmenList);
+		return batsmenList.stream().sorted(comparator.reversed()).collect(Collectors.toList());
+	}
 }
