@@ -62,4 +62,24 @@ public class IPLAnalyser {
 		Collections.reverse(batsmenList);
 		return batsmenList.stream().sorted(comparator.reversed()).collect(Collectors.toList());
 	}
+	
+	// sort by avg and strike rate
+	public List<IPLRunsCSV> sortByAverageAndStrikerate() {
+		Comparator<IPLRunsCSV> averageComparator = Comparator.comparing(Batsmen -> Batsmen.battingAverage);
+		Comparator<IPLRunsCSV> strikerateComparator = Comparator.comparing(Batsmen -> Batsmen.strikeRate);
+		Comparator<IPLRunsCSV> comparator = averageComparator.thenComparing(strikerateComparator);
+		this.batsmenList.sort(comparator);
+		Collections.reverse(batsmenList);
+		return batsmenList.stream().sorted(comparator.reversed()).collect(Collectors.toList());
+	}
+	
+	// sort by maximum avg and runs
+	public List<IPLRunsCSV> sortByMaximumRunsAndAverage() {
+		Comparator<IPLRunsCSV> averageComparator = Comparator.comparing(Batsmen -> Batsmen.totalRuns);
+		Comparator<IPLRunsCSV> strikerateComparator = Comparator.comparing(Batsmen -> Batsmen.battingAverage);
+		Comparator<IPLRunsCSV> comparator = averageComparator.thenComparing(strikerateComparator);
+		this.batsmenList.sort(comparator);
+		Collections.reverse(batsmenList);
+		return batsmenList.stream().sorted(comparator.reversed()).collect(Collectors.toList());
+	}
 }
