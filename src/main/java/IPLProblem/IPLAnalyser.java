@@ -44,4 +44,9 @@ public class IPLAnalyser {
 			throw new IPLException(e.getMessage(), IPLException.ExceptionType.CSV_FILE_PROBLEM);
 		}
 	}
+	
+	public List<IPLRunsCSV> sortByBattingAverage() {
+		Comparator<IPLRunsCSV> comparator = Comparator.comparing(Batsmen -> Batsmen.battingAverage);
+		return batsmenList.stream().sorted(comparator.reversed()).collect(Collectors.toList());
+	}
 }
