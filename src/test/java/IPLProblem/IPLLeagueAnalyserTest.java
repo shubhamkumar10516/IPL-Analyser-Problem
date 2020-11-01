@@ -35,4 +35,11 @@ public class IPLLeagueAnalyserTest {
 		List<IPLRunsCSV> batsmenList = iplAnalyser.highestStrikeRate();
 		assertEquals(batsmenList.get(0).playerName, "Ishant Sharma");
 	}
+    
+    @Test
+	public void MaximumNumberofSixesAndFours() throws IPLException {
+		iplAnalyser.loadIPLBatsmenData(IPL_RUNS_FILEPATH);
+		List<IPLRunsCSV> batsmenList = iplAnalyser.sortByBoundaries();
+		assertEquals(batsmenList.get(0).playerName, "Andre Russell");
+	}
 }
