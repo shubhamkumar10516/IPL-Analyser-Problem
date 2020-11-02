@@ -80,4 +80,10 @@ public class IPLLeagueAnalyserTest {
 		assertEquals(bowlerList.get(0).playerName, "Shivam Dube");
 	}
 	
+    @Test
+	public void sortByBestStrikeRateAnd4w5w() throws IPLException {
+		iplAnalyser.loadIPLBowlerData(IPL_WICKETS_FILEPATH);
+		IPLWicketsCSV bowler = iplAnalyser.sortByBowlingStrikeRateAnd5w();
+		assertEquals(bowler.playerName, "Alzarri Joseph");
+	}
 }
