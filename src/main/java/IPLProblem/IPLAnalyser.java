@@ -57,7 +57,7 @@ public class IPLAnalyser {
 
 	// sort by boundries in reverse order
 	public List<IPLRunsCSV> sortByBoundaries() {
-		Comparator<IPLRunsCSV> comparator = Comparator.comparing(Batsmen -> Batsmen.noOfBoundaries + Batsmen.noOfSixes);
+		Comparator<IPLRunsCSV> comparator = Comparator.comparing(Batsmen -> Batsmen.noOfFours + Batsmen.noOfSixes);
 		this.batsmenList.sort(comparator);
 		Collections.reverse(batsmenList);
 		return batsmenList.stream().sorted(comparator.reversed()).collect(Collectors.toList());
@@ -126,6 +126,15 @@ public class IPLAnalyser {
 				.thenComparing(strikerateComparator.reversed());
 		this.bowlerList.sort(comparator);
 		return bowlerList.get(0);
+	}
+	
+	// maximum 100 and best average
+	public IPLRunsCSV sortByMaximumHundsAndAverage() {
+		Comparator<IPLRunsCSV> centuryComparator = Comparator.comparing(Batsmen -> Batsmen.noOf100s);
+		Comparator<IPLRunsCSV> strikerateComparator = Comparator.comparing(Batsmen -> Batsmen.battingAverage);
+		Comparator<IPLRunsCSV> comparator = centuryComparator.reversed().thenComparing(strikerateComparator.reversed());
+		this.batsmenList.sort(comparator);
+		return batsmenList.get(0);
 	}
 
 	// sort by best bowling and batting average

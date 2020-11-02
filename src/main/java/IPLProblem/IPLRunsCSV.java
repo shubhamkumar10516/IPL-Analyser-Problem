@@ -20,10 +20,10 @@ public class IPLRunsCSV {
 	public int noOfSixes;
 	
 	@CsvBindByName(column = "4s")
-	public int noOfBoundaries;
+	public int noOfFours;
 	
 	@CsvBindByName(column = "100")
-	public int noOfCenturies;
+	public int noOf100s;
 	
 	@Override
 	public String toString() {
