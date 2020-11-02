@@ -18,4 +18,7 @@ public class IPLWicketsCSV {
 	@CsvBindByName(column = "econ")
 	public double economy;
 	
+	@CsvBindByName(column = "5w")
+	public int wik5;
+	
 }

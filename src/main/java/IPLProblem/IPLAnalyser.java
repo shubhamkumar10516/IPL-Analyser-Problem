@@ -99,6 +99,13 @@ public class IPLAnalyser {
 		return bowlerList.stream().sorted(comparator).collect(Collectors.toList());
 	}
 	
+	public IPLWicketsCSV sortByBowlingStrikeRateAnd5w() {
+		Comparator<IPLWicketsCSV> strikeRateComparator = Comparator.comparing(bowler -> bowler.strikeRate);
+		Comparator<IPLWicketsCSV> wicketsComparator = Comparator.comparing(bowler -> bowler.wik5);
+		Comparator comparator = wicketsComparator.reversed().thenComparing(strikeRateComparator);
+		bowlerList = (List<IPLWicketsCSV>) bowlerList.stream().sorted(comparator).collect(Collectors.toList());
+		return bowlerList.get(0);
+	}
 	private <E> void sort(Comparator<E> IPLComparator, List<E> sortList) {
 		for (int i = 0; i < sortList.size() - 1; i++) {
 			for (int j = 0; j < sortList.size() - i - 1; j++) {
