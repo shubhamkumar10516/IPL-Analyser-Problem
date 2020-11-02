@@ -151,6 +151,17 @@ public class IPLAnalyser {
 		return null;
 	}
 
+	//sorting batsman by zero 100 and best average
+	public IPLRunsCSV sortByMinimum100AndAverage() {
+		Comparator<IPLRunsCSV> centuryComparator = Comparator.comparing(Batsmen -> Batsmen.noOf100s);
+		Comparator<IPLRunsCSV> halfCenturyComparator = Comparator.comparing(Batsmen -> Batsmen.noOf50s);
+		Comparator<IPLRunsCSV> strikerateComparator = Comparator.comparing(Batsmen -> Batsmen.battingAverage);
+		Comparator<IPLRunsCSV> comparator = centuryComparator.thenComparing(halfCenturyComparator).thenComparing(strikerateComparator.reversed());
+		this.batsmenList.sort(comparator);
+		return batsmenList.get(0);
+	}
+	
+	// sort method(bubble sort)
 	private <E> void sort(Comparator<E> IPLComparator, List<E> sortList) {
 		for (int i = 0; i < sortList.size() - 1; i++) {
 			for (int j = 0; j < sortList.size() - i - 1; j++) {

@@ -25,6 +25,9 @@ public class IPLRunsCSV {
 	@CsvBindByName(column = "100")
 	public int noOf100s;
 	
+	@CsvBindByName(column = "50")
+	public int noOf50s;
+	
 	@Override
 	public String toString() {
 		return playerName;
