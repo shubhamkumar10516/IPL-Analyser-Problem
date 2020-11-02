@@ -86,4 +86,11 @@ public class IPLLeagueAnalyserTest {
 		IPLWicketsCSV bowler = iplAnalyser.sortByBowlingStrikeRateAnd5w();
 		assertEquals(bowler.playerName, "Alzarri Joseph");
 	}
+    
+    @Test
+	public void sortByBestBowlingAvgRateAndStrikeRate() throws IPLException {
+		iplAnalyser.loadIPLBowlerData(IPL_WICKETS_FILEPATH);
+		IPLWicketsCSV bowler = iplAnalyser.sortByBestBowlingAvgRateAndStrikeRate();
+		assertEquals(bowler.playerName, "Anukul Roy");
+	}
 }
