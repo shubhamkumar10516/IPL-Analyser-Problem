@@ -65,4 +65,12 @@ public class IPLLeagueAnalyserTest {
 		List<IPLWicketsCSV> bowlerList = iplAnalyser.sortByBowlingAverage();
 		assertEquals(bowlerList.get(0).playerName, "Krishnappa Gowtham");
 	}
+    
+    @Test
+	public void sortByBestStrikeRate() throws IPLException {
+		iplAnalyser.loadIPLBowlerData(IPL_WICKETS_FILEPATH);
+		List<IPLWicketsCSV> bowlerList = iplAnalyser.sortByBowlingStrikeRate();
+		assertEquals(bowlerList.get(0).playerName, "Krishnappa Gowtham");
+	}
+	
 }
