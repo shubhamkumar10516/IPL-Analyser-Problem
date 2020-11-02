@@ -100,4 +100,11 @@ public class IPLLeagueAnalyserTest {
 		IPLWicketsCSV bowler = iplAnalyser.sortByBestBowlingAvgRateAndStrikeRate();
 		assertEquals(bowler.playerName, "Anukul Roy");
 	}
+    
+    @Test
+	public void bestBattingandBowlingAverages() throws IPLException {
+		iplAnalyser.loadIPLBowlerData(IPL_WICKETS_FILEPATH);
+		iplAnalyser.loadIPLBatsmenData(IPL_RUNS_FILEPATH);
+		assertEquals(iplAnalyser.bestBattingAndBowlingAverages(), "Umesh Yadav");
+	}
 }
