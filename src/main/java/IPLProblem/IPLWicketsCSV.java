@@ -15,4 +15,7 @@ public class IPLWicketsCSV {
 	@CsvBindByName(column = "SR")
 	public double strikeRate;
 	
+	@CsvBindByName(column = "econ")
+	public double economy;
+	
 }
