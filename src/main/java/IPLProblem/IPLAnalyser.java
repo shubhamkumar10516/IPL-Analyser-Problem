@@ -118,6 +118,13 @@ public class IPLAnalyser {
 		}
 		return null;
 	}
+	public IPLWicketsCSV sortByMaximumWicketAndBowlingAverage() {
+		Comparator<IPLWicketsCSV> centuryComparator = Comparator.comparing(Bowler -> Bowler.totalWickets);
+		Comparator<IPLWicketsCSV> strikerateComparator = Comparator.comparing(Bowler -> Bowler.bowlingAverage);
+		Comparator<IPLWicketsCSV> comparator = centuryComparator.reversed().thenComparing(strikerateComparator.reversed());
+		this.bowlerList.sort(comparator);
+		return bowlerList.get(0);
+	}
 	
 	private <E> void sort(Comparator<E> IPLComparator, List<E> sortList) {
 		for (int i = 0; i < sortList.size() - 1; i++) {
