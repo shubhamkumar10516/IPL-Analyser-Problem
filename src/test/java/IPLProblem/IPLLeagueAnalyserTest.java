@@ -113,4 +113,10 @@ public class IPLLeagueAnalyserTest {
 		iplAnalyser.loadIPLBatsmenData(IPL_RUNS_FILEPATH);
 		assertEquals(iplAnalyser.sortByMaximumHundsAndAverage().playerName, "David Warner ");		
 	}
+    
+    @Test
+	public void findPlayerwithNoHundredAndBestAverage() throws IPLException {
+		iplAnalyser.loadIPLBatsmenData(IPL_RUNS_FILEPATH);
+		assertEquals(iplAnalyser.sortByMinimum100AndAverage().playerName, "Marcus Stoinis");		
+	}
 }
