@@ -58,5 +58,11 @@ public class IPLLeagueAnalyserTest {
 		List<IPLRunsCSV> batsmenList = iplAnalyser.sortByMaximumRunsAndAverage();
 		assertEquals(batsmenList.get(0).playerName, "David Warner ");
 	}
-
+ 
+    @Test
+	public void sortByBestBowlingAverage() throws IPLException {
+		iplAnalyser.loadIPLBowlerData(IPL_WICKETS_FILEPATH);
+		List<IPLWicketsCSV> bowlerList = iplAnalyser.sortByBowlingAverage();
+		assertEquals(bowlerList.get(0).playerName, "Krishnappa Gowtham");
+	}
 }
